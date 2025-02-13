@@ -6,7 +6,7 @@ Este projeto está em desenvolvimento ativo. Algumas funcionalidades ainda estã
 
 - Criação de novos documentos (Em progresso)
 - Edição de documentos existentes (Em progresso)
-- Salvamento de documentos (Não implementado)
+- Salvamento de documentos (Implementado)
 - Suporte a vários formatos de arquivo (Planejado)
 
 ## Como Usar
