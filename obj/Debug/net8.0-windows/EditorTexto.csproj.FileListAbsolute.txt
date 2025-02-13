@@ -1,0 +1,17 @@
+D:\POO(C#)\EditorTexto\EditorTexto\bin\Debug\net8.0-windows\EditorTexto.exe
+D:\POO(C#)\EditorTexto\EditorTexto\bin\Debug\net8.0-windows\EditorTexto.deps.json
+D:\POO(C#)\EditorTexto\EditorTexto\bin\Debug\net8.0-windows\EditorTexto.runtimeconfig.json
+D:\POO(C#)\EditorTexto\EditorTexto\bin\Debug\net8.0-windows\EditorTexto.dll
+D:\POO(C#)\EditorTexto\EditorTexto\bin\Debug\net8.0-windows\EditorTexto.pdb
+D:\POO(C#)\EditorTexto\EditorTexto\obj\Debug\net8.0-windows\EditorTexto.FrmMain.resources
+D:\POO(C#)\EditorTexto\EditorTexto\obj\Debug\net8.0-windows\EditorTexto.Properties.Resources.resources
+D:\POO(C#)\EditorTexto\EditorTexto\obj\Debug\net8.0-windows\EditorTexto.csproj.GenerateResource.cache
+D:\POO(C#)\EditorTexto\EditorTexto\obj\Debug\net8.0-windows\EditorTexto.GeneratedMSBuildEditorConfig.editorconfig
+D:\POO(C#)\EditorTexto\EditorTexto\obj\Debug\net8.0-windows\EditorTexto.AssemblyInfoInputs.cache
+D:\POO(C#)\EditorTexto\EditorTexto\obj\Debug\net8.0-windows\EditorTexto.AssemblyInfo.cs
+D:\POO(C#)\EditorTexto\EditorTexto\obj\Debug\net8.0-windows\EditorTexto.csproj.CoreCompileInputs.cache
+D:\POO(C#)\EditorTexto\EditorTexto\obj\Debug\net8.0-windows\EditorTexto.dll
+D:\POO(C#)\EditorTexto\EditorTexto\obj\Debug\net8.0-windows\refint\EditorTexto.dll
+D:\POO(C#)\EditorTexto\EditorTexto\obj\Debug\net8.0-windows\EditorTexto.pdb
+D:\POO(C#)\EditorTexto\EditorTexto\obj\Debug\net8.0-windows\EditorTexto.genruntimeconfig.cache
+D:\POO(C#)\EditorTexto\EditorTexto\obj\Debug\net8.0-windows\ref\EditorTexto.dll
