@@ -15,3 +15,4 @@ D:\POO(C#)\EditorTexto\EditorTexto\obj\Debug\net8.0-windows\refint\EditorTexto.d
 D:\POO(C#)\EditorTexto\EditorTexto\obj\Debug\net8.0-windows\EditorTexto.pdb
 D:\POO(C#)\EditorTexto\EditorTexto\obj\Debug\net8.0-windows\EditorTexto.genruntimeconfig.cache
 D:\POO(C#)\EditorTexto\EditorTexto\obj\Debug\net8.0-windows\ref\EditorTexto.dll
+D:\POO(C#)\EditorTexto\EditorTexto\obj\Debug\net8.0-windows\EditorTexto.sourcelink.json
