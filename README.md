@@ -4,8 +4,8 @@ Este projeto está em desenvolvimento ativo. Algumas funcionalidades ainda estã
 
 ## Funcionalidades Planejadas
 
-- Criação de novos documentos (Em progresso)
-- Edição de documentos existentes (Em progresso)
+- Criação de novos documentos (Implementado)
+- Edição de documentos existentes (Implementado)
 - Salvamento de documentos (Implementado)
 - Suporte a vários formatos de arquivo (Planejado)
 
