@@ -51,7 +51,6 @@
             centralizadoToolStripMenuItem = new ToolStripMenuItem();
             esquerdaToolStripMenuItem = new ToolStripMenuItem();
             direitaToolStripMenuItem = new ToolStripMenuItem();
-            justificarToolStripMenuItem = new ToolStripMenuItem();
             BarFerramentas = new ToolStrip();
             btnNovo = new ToolStripButton();
             btnAbrir = new ToolStripButton();
@@ -68,7 +67,6 @@
             toolSeparator3 = new ToolStripSeparator();
             btnEsquerda = new ToolStripButton();
             btnCentro = new ToolStripButton();
-            btnJustificado = new ToolStripButton();
             btnDireita = new ToolStripButton();
             fontDialog1 = new FontDialog();
             openFileDialog1 = new OpenFileDialog();
@@ -83,7 +81,7 @@
             // 
             richTextBox1.Location = new Point(0, 52);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(697, 360);
+            richTextBox1.Size = new Size(697, 358);
             richTextBox1.TabIndex = 0;
             richTextBox1.Text = "";
             // 
@@ -123,6 +121,7 @@
             imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
             imprimirToolStripMenuItem.Size = new Size(120, 22);
             imprimirToolStripMenuItem.Text = "Imprimir";
+            imprimirToolStripMenuItem.Click += Imprimir_Click;
             // 
             // salvarToolStripMenuItem
             // 
@@ -147,27 +146,27 @@
             // copiarToolStripMenuItem
             // 
             copiarToolStripMenuItem.Name = "copiarToolStripMenuItem";
-            copiarToolStripMenuItem.Size = new Size(180, 22);
+            copiarToolStripMenuItem.Size = new Size(118, 22);
             copiarToolStripMenuItem.Text = "Copiar";
             copiarToolStripMenuItem.Click += Copiar_Click;
             // 
             // colarToolStripMenuItem
             // 
             colarToolStripMenuItem.Name = "colarToolStripMenuItem";
-            colarToolStripMenuItem.Size = new Size(180, 22);
+            colarToolStripMenuItem.Size = new Size(118, 22);
             colarToolStripMenuItem.Text = "Colar";
             colarToolStripMenuItem.Click += Colar_Click;
             // 
             // desfazerToolStripMenuItem
             // 
             desfazerToolStripMenuItem.Name = "desfazerToolStripMenuItem";
-            desfazerToolStripMenuItem.Size = new Size(180, 22);
+            desfazerToolStripMenuItem.Size = new Size(118, 22);
             desfazerToolStripMenuItem.Text = "Desfazer";
             // 
             // refazerToolStripMenuItem
             // 
             refazerToolStripMenuItem.Name = "refazerToolStripMenuItem";
-            refazerToolStripMenuItem.Size = new Size(180, 22);
+            refazerToolStripMenuItem.Size = new Size(118, 22);
             refazerToolStripMenuItem.Text = "Refazer";
             // 
             // formatarToolStripMenuItem
@@ -181,65 +180,62 @@
             // 
             estilosDeFontesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { negritoToolStripMenuItem, itálicoToolStripMenuItem, sublinhadoToolStripMenuItem });
             estilosDeFontesToolStripMenuItem.Name = "estilosDeFontesToolStripMenuItem";
-            estilosDeFontesToolStripMenuItem.Size = new Size(180, 22);
+            estilosDeFontesToolStripMenuItem.Size = new Size(161, 22);
             estilosDeFontesToolStripMenuItem.Text = "Estilos de Fontes";
             // 
             // negritoToolStripMenuItem
             // 
             negritoToolStripMenuItem.Name = "negritoToolStripMenuItem";
-            negritoToolStripMenuItem.Size = new Size(180, 22);
+            negritoToolStripMenuItem.Size = new Size(134, 22);
             negritoToolStripMenuItem.Text = "Negrito";
             negritoToolStripMenuItem.Click += Negrito_Click;
             // 
             // itálicoToolStripMenuItem
             // 
             itálicoToolStripMenuItem.Name = "itálicoToolStripMenuItem";
-            itálicoToolStripMenuItem.Size = new Size(180, 22);
+            itálicoToolStripMenuItem.Size = new Size(134, 22);
             itálicoToolStripMenuItem.Text = "Itálico";
             itálicoToolStripMenuItem.Click += Italico_Click;
             // 
             // sublinhadoToolStripMenuItem
             // 
             sublinhadoToolStripMenuItem.Name = "sublinhadoToolStripMenuItem";
-            sublinhadoToolStripMenuItem.Size = new Size(180, 22);
+            sublinhadoToolStripMenuItem.Size = new Size(134, 22);
             sublinhadoToolStripMenuItem.Text = "Sublinhado";
             sublinhadoToolStripMenuItem.Click += Sublinhado_Click;
             // 
             // alinhamentoToolStripMenuItem
             // 
-            alinhamentoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { centralizadoToolStripMenuItem, esquerdaToolStripMenuItem, direitaToolStripMenuItem, justificarToolStripMenuItem });
+            alinhamentoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { centralizadoToolStripMenuItem, esquerdaToolStripMenuItem, direitaToolStripMenuItem });
             alinhamentoToolStripMenuItem.Name = "alinhamentoToolStripMenuItem";
-            alinhamentoToolStripMenuItem.Size = new Size(180, 22);
+            alinhamentoToolStripMenuItem.Size = new Size(161, 22);
             alinhamentoToolStripMenuItem.Text = "Alinhamento";
             // 
             // centralizadoToolStripMenuItem
             // 
             centralizadoToolStripMenuItem.Name = "centralizadoToolStripMenuItem";
-            centralizadoToolStripMenuItem.Size = new Size(180, 22);
+            centralizadoToolStripMenuItem.Size = new Size(130, 22);
             centralizadoToolStripMenuItem.Text = "Centralizar";
+            centralizadoToolStripMenuItem.Click += Centro_Click;
             // 
             // esquerdaToolStripMenuItem
             // 
             esquerdaToolStripMenuItem.Name = "esquerdaToolStripMenuItem";
-            esquerdaToolStripMenuItem.Size = new Size(180, 22);
+            esquerdaToolStripMenuItem.Size = new Size(130, 22);
             esquerdaToolStripMenuItem.Text = "Esquerda";
+            esquerdaToolStripMenuItem.Click += Esquerda_Click;
             // 
             // direitaToolStripMenuItem
             // 
             direitaToolStripMenuItem.Name = "direitaToolStripMenuItem";
-            direitaToolStripMenuItem.Size = new Size(180, 22);
+            direitaToolStripMenuItem.Size = new Size(130, 22);
             direitaToolStripMenuItem.Text = "Direita";
-            // 
-            // justificarToolStripMenuItem
-            // 
-            justificarToolStripMenuItem.Name = "justificarToolStripMenuItem";
-            justificarToolStripMenuItem.Size = new Size(180, 22);
-            justificarToolStripMenuItem.Text = "Justificar";
+            direitaToolStripMenuItem.Click += Direita_Click;
             // 
             // BarFerramentas
             // 
             BarFerramentas.BackColor = SystemColors.ButtonFace;
-            BarFerramentas.Items.AddRange(new ToolStripItem[] { btnNovo, btnAbrir, btnSalvar, btnImprimir, toolSeparator1, btnCopiar, btnColar, toolSeparator2, btnNegrito, btnItalico, btnSublinhado, btnFonte, toolSeparator3, btnEsquerda, btnCentro, btnJustificado, btnDireita });
+            BarFerramentas.Items.AddRange(new ToolStripItem[] { btnNovo, btnAbrir, btnSalvar, btnImprimir, toolSeparator1, btnCopiar, btnColar, toolSeparator2, btnNegrito, btnItalico, btnSublinhado, btnFonte, toolSeparator3, btnEsquerda, btnCentro, btnDireita });
             BarFerramentas.Location = new Point(0, 24);
             BarFerramentas.Name = "BarFerramentas";
             BarFerramentas.Size = new Size(697, 25);
@@ -285,6 +281,7 @@
             btnImprimir.Size = new Size(23, 22);
             btnImprimir.Text = "Imprimir";
             btnImprimir.TextDirection = ToolStripTextDirection.Horizontal;
+            btnImprimir.Click += Imprimir_Click;
             // 
             // toolSeparator1
             // 
@@ -370,6 +367,7 @@
             btnEsquerda.Name = "btnEsquerda";
             btnEsquerda.Size = new Size(23, 22);
             btnEsquerda.Text = "Esquerda";
+            btnEsquerda.Click += Esquerda_Click;
             // 
             // btnCentro
             // 
@@ -379,15 +377,7 @@
             btnCentro.Name = "btnCentro";
             btnCentro.Size = new Size(23, 22);
             btnCentro.Text = "Centro";
-            // 
-            // btnJustificado
-            // 
-            btnJustificado.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnJustificado.Image = Properties.Resources.alnhjustificado;
-            btnJustificado.ImageTransparentColor = Color.Magenta;
-            btnJustificado.Name = "btnJustificado";
-            btnJustificado.Size = new Size(23, 22);
-            btnJustificado.Text = "Justificado";
+            btnCentro.Click += Centro_Click;
             // 
             // btnDireita
             // 
@@ -397,6 +387,7 @@
             btnDireita.Name = "btnDireita";
             btnDireita.Size = new Size(23, 22);
             btnDireita.Text = "Direita";
+            btnDireita.Click += Direita_Click;
             // 
             // openFileDialog1
             // 
@@ -410,6 +401,10 @@
             // printDialog1
             // 
             printDialog1.UseEXDialog = true;
+            // 
+            // printDocument1
+            // 
+            printDocument1.PrintPage += printDocument1_PrintPage;
             // 
             // FrmMain
             // 
@@ -456,7 +451,6 @@
         private ToolStripMenuItem imprimirToolStripMenuItem;
         private ToolStripMenuItem esquerdaToolStripMenuItem;
         private ToolStripMenuItem direitaToolStripMenuItem;
-        private ToolStripMenuItem justificarToolStripMenuItem;
         private ToolStripButton btnNovo;
         private ToolStripButton btnAbrir;
         private ToolStripButton btnSalvar;
@@ -472,7 +466,6 @@
         private ToolStripSeparator toolSeparator3;
         private ToolStripButton btnEsquerda;
         private ToolStripButton btnCentro;
-        private ToolStripButton btnJustificado;
         private ToolStripButton btnDireita;
         private FontDialog fontDialog1;
         private OpenFileDialog openFileDialog1;
