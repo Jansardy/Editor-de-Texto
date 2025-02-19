@@ -3,10 +3,13 @@ namespace EditorTexto
     public partial class FrmMain : Form
     {
         StringReader leitura = null;
+        Stack<string> undoStack = new Stack<string>();
+        Stack<string> redoStack = new Stack<string>();
 
         public FrmMain()
         {
             InitializeComponent();
+            richTextBox1.TextChanged += RichTextBox1_TextChanged;
         }
 
         #region Eventos
@@ -14,6 +17,11 @@ namespace EditorTexto
         {
             richTextBox1.Clear();
             richTextBox1.Focus();
+        }
+
+        private void Sair_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         private void Salvar_Click(object sender, EventArgs e)
@@ -40,6 +48,16 @@ namespace EditorTexto
             {
                 richTextBox1.Paste();
             }
+        }
+
+        private void Refazer_Click(object sender, EventArgs e)
+        {
+            Desfazer_Refazer("Refazer");
+        }
+
+        private void Desfazer_Click(object sender, EventArgs e)
+        {
+            Desfazer_Refazer("Desfazer");
         }
 
         private void Negrito_Click(object sender, EventArgs e)
@@ -87,25 +105,35 @@ namespace EditorTexto
 
         #region Metodos|Funções
 
+        private void RichTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            undoStack.Push(richTextBox1.Text);
+            redoStack.Clear();
+        }
+
         private void Salvar()
         {
             try
             {
+                saveFileDialog1.Filter = "Text Files (*.txt)|*.txt|Rich Text Files (*.rtf)|*.rtf";
                 DialogResult dr = this.saveFileDialog1.ShowDialog();
                 if (dr == DialogResult.OK)
                 {
-                    FileStream arquivo = new FileStream(saveFileDialog1.FileName, FileMode.OpenOrCreate, FileAccess.Write);
-                    StreamWriter arq_streamWriter = new StreamWriter(arquivo);
-                    arq_streamWriter.Flush();
-                    arq_streamWriter.BaseStream.Seek(0, SeekOrigin.Begin);
-                    arq_streamWriter.Write(this.richTextBox1.Text);
-                    arq_streamWriter.Flush();
-                    arq_streamWriter.Close();
+                    string extensao = Path.GetExtension(saveFileDialog1.FileName).ToLower();
+                    if (extensao == ".rtf")
+                    {
+                        richTextBox1.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.RichText);
+                    }
+                    else
+                    {
+                        richTextBox1.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+                    }
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Erro na gravação: " + ex.Message, "Erro ao Gravar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
@@ -113,25 +141,22 @@ namespace EditorTexto
         {
             this.openFileDialog1.Title = "Abrir Arquivo";
             openFileDialog1.InitialDirectory = @"C:\Users\jansen\Documentos";
-            openFileDialog1.Filter = "(*.TXT)|*.TXT";
+            openFileDialog1.Filter = "Text Files (*.txt)|*.txt|Rich Text Files (*.rtf)|*.rtf|All Files (*.*)|*.*";
 
             DialogResult dr = this.openFileDialog1.ShowDialog();
             if (dr == DialogResult.OK)
             {
                 try
                 {
-                    FileStream arquivo = new FileStream(openFileDialog1.FileName, FileMode.Open, FileAccess.Read);
-                    StreamReader arq_streamReader = new StreamReader(arquivo);
-                    arq_streamReader.BaseStream.Seek(0, SeekOrigin.Begin);
-                    this.richTextBox1.Text = "";
-
-                    string linha = arq_streamReader.ReadLine();
-                    while (linha != null)
+                    string extensao = Path.GetExtension(openFileDialog1.FileName).ToLower();
+                    if (extensao == ".rtf")
                     {
-                        this.richTextBox1.Text += linha + "\n";
-                        linha = arq_streamReader.ReadLine();
+                        richTextBox1.LoadFile(openFileDialog1.FileName, RichTextBoxStreamType.RichText);
                     }
-                    arq_streamReader.Close();
+                    else
+                    {
+                        richTextBox1.LoadFile(openFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -210,6 +235,27 @@ namespace EditorTexto
             pincel.Dispose();
         }
 
+        private void Desfazer_Refazer(string acao)
+        {
+            if (acao == "Desfazer")
+            {
+                if(undoStack.Count > 0)
+                {
+                    redoStack.Push(richTextBox1.Text);
+                    richTextBox1.Text = undoStack.Pop();
+                }
+            }
+            else if (acao == "Refazer")
+            {
+                if (redoStack.Count > 0)
+                {
+                    undoStack.Push(richTextBox1.Text);
+                    richTextBox1.Text = redoStack.Pop();
+                }
+            }
+        }
+
         #endregion
+
     }
 }
