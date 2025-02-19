@@ -133,6 +133,16 @@ namespace EditorTexto.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Desfazer {
+            get {
+                object obj = ResourceManager.GetObject("Desfazer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Fonte {
             get {
                 object obj = ResourceManager.GetObject("Fonte", resourceCulture);
@@ -176,6 +186,16 @@ namespace EditorTexto.Properties {
         internal static System.Drawing.Bitmap Novo {
             get {
                 object obj = ResourceManager.GetObject("Novo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Refazer {
+            get {
+                object obj = ResourceManager.GetObject("Refazer", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

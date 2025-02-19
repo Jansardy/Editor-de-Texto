@@ -68,17 +68,24 @@
             btnEsquerda = new ToolStripButton();
             btnCentro = new ToolStripButton();
             btnDireita = new ToolStripButton();
+            toolSeparator4 = new ToolStripSeparator();
+            btnDesfazer = new ToolStripButton();
+            btnRefazer = new ToolStripButton();
+            toolSeparator5 = new ToolStripSeparator();
+            TxtBox_Buscador = new ToolStripTextBox();
             fontDialog1 = new FontDialog();
             openFileDialog1 = new OpenFileDialog();
             saveFileDialog1 = new SaveFileDialog();
             printDialog1 = new PrintDialog();
             printDocument1 = new System.Drawing.Printing.PrintDocument();
+            lblBuscar = new ToolStripLabel();
             menuStrip1.SuspendLayout();
             BarFerramentas.SuspendLayout();
             SuspendLayout();
             // 
             // richTextBox1
             // 
+            richTextBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             richTextBox1.Location = new Point(0, 52);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.Size = new Size(697, 358);
@@ -135,6 +142,7 @@
             sairToolStripMenuItem.Name = "sairToolStripMenuItem";
             sairToolStripMenuItem.Size = new Size(120, 22);
             sairToolStripMenuItem.Text = "Sair";
+            sairToolStripMenuItem.Click += Sair_Click;
             // 
             // editarToolStripMenuItem
             // 
@@ -162,12 +170,14 @@
             desfazerToolStripMenuItem.Name = "desfazerToolStripMenuItem";
             desfazerToolStripMenuItem.Size = new Size(118, 22);
             desfazerToolStripMenuItem.Text = "Desfazer";
+            desfazerToolStripMenuItem.Click += Desfazer_Click;
             // 
             // refazerToolStripMenuItem
             // 
             refazerToolStripMenuItem.Name = "refazerToolStripMenuItem";
             refazerToolStripMenuItem.Size = new Size(118, 22);
             refazerToolStripMenuItem.Text = "Refazer";
+            refazerToolStripMenuItem.Click += Refazer_Click;
             // 
             // formatarToolStripMenuItem
             // 
@@ -235,7 +245,7 @@
             // BarFerramentas
             // 
             BarFerramentas.BackColor = SystemColors.ButtonFace;
-            BarFerramentas.Items.AddRange(new ToolStripItem[] { btnNovo, btnAbrir, btnSalvar, btnImprimir, toolSeparator1, btnCopiar, btnColar, toolSeparator2, btnNegrito, btnItalico, btnSublinhado, btnFonte, toolSeparator3, btnEsquerda, btnCentro, btnDireita });
+            BarFerramentas.Items.AddRange(new ToolStripItem[] { btnNovo, btnAbrir, btnSalvar, btnImprimir, toolSeparator1, btnCopiar, btnColar, toolSeparator2, btnNegrito, btnItalico, btnSublinhado, btnFonte, toolSeparator3, btnEsquerda, btnCentro, btnDireita, toolSeparator4, btnDesfazer, btnRefazer, toolSeparator5, lblBuscar, TxtBox_Buscador });
             BarFerramentas.Location = new Point(0, 24);
             BarFerramentas.Name = "BarFerramentas";
             BarFerramentas.Size = new Size(697, 25);
@@ -389,6 +399,41 @@
             btnDireita.Text = "Direita";
             btnDireita.Click += Direita_Click;
             // 
+            // toolSeparator4
+            // 
+            toolSeparator4.Name = "toolSeparator4";
+            toolSeparator4.Size = new Size(6, 25);
+            // 
+            // btnDesfazer
+            // 
+            btnDesfazer.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnDesfazer.Image = Properties.Resources.Desfazer;
+            btnDesfazer.ImageTransparentColor = Color.Magenta;
+            btnDesfazer.Name = "btnDesfazer";
+            btnDesfazer.Size = new Size(23, 22);
+            btnDesfazer.Text = "Desfazer";
+            // 
+            // btnRefazer
+            // 
+            btnRefazer.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnRefazer.Image = Properties.Resources.Refazer;
+            btnRefazer.ImageTransparentColor = Color.Magenta;
+            btnRefazer.Name = "btnRefazer";
+            btnRefazer.Size = new Size(23, 22);
+            btnRefazer.Text = "Refazer";
+            // 
+            // toolSeparator5
+            // 
+            toolSeparator5.Name = "toolSeparator5";
+            toolSeparator5.Size = new Size(6, 25);
+            // 
+            // TxtBox_Buscador
+            // 
+            TxtBox_Buscador.BorderStyle = BorderStyle.FixedSingle;
+            TxtBox_Buscador.Name = "TxtBox_Buscador";
+            TxtBox_Buscador.Size = new Size(100, 25);
+            TxtBox_Buscador.TextBoxTextAlign = HorizontalAlignment.Center;
+            // 
             // openFileDialog1
             // 
             openFileDialog1.FileName = "openFileDialog1";
@@ -405,6 +450,12 @@
             // printDocument1
             // 
             printDocument1.PrintPage += printDocument1_PrintPage;
+            // 
+            // lblBuscar
+            // 
+            lblBuscar.Name = "lblBuscar";
+            lblBuscar.Size = new Size(45, 22);
+            lblBuscar.Text = "Buscar:";
             // 
             // FrmMain
             // 
@@ -472,5 +523,11 @@
         private SaveFileDialog saveFileDialog1;
         private PrintDialog printDialog1;
         private System.Drawing.Printing.PrintDocument printDocument1;
+        private ToolStripSeparator toolSeparator4;
+        private ToolStripButton btnDesfazer;
+        private ToolStripButton btnRefazer;
+        private ToolStripSeparator toolSeparator5;
+        private ToolStripTextBox TxtBox_Buscador;
+        private ToolStripLabel lblBuscar;
     }
 }
