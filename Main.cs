@@ -1,8 +1,11 @@
+using System.Text;
+
 namespace EditorTexto
 {
     public partial class FrmMain : Form
     {
         StringReader leitura = null;
+        private string previousText = "";
         Stack<string> undoStack = new Stack<string>();
         Stack<string> redoStack = new Stack<string>();
 
@@ -107,8 +110,12 @@ namespace EditorTexto
 
         private void RichTextBox1_TextChanged(object sender, EventArgs e)
         {
-            undoStack.Push(richTextBox1.Text);
-            redoStack.Clear();
+            if (richTextBox1.Text != previousText)
+            {
+                undoStack.Push(previousText);
+                previousText = richTextBox1.Text;
+                redoStack.Clear();
+            }
         }
 
         private void Salvar()
@@ -126,19 +133,22 @@ namespace EditorTexto
                     }
                     else
                     {
-                        richTextBox1.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+                        using (StreamWriter sw = new StreamWriter(saveFileDialog1.FileName, false, Encoding.UTF8))
+                        {
+                            sw.Write(richTextBox1.Text);
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Erro na gravação: " + ex.Message, "Erro ao Gravar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
         }
 
         private void Abrir()
         {
+
             this.openFileDialog1.Title = "Abrir Arquivo";
             openFileDialog1.InitialDirectory = @"C:\Users\jansen\Documentos";
             openFileDialog1.Filter = "Text Files (*.txt)|*.txt|Rich Text Files (*.rtf)|*.rtf|All Files (*.*)|*.*";
@@ -155,7 +165,10 @@ namespace EditorTexto
                     }
                     else
                     {
-                        richTextBox1.LoadFile(openFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+                        using (StreamReader sr = new StreamReader(openFileDialog1.FileName, Encoding.UTF8))
+                        {
+                            richTextBox1.Text = sr.ReadToEnd();
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -163,6 +176,8 @@ namespace EditorTexto
                     MessageBox.Show("Erro de leitura: " + ex.Message, "Erro ao ler", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
+
         }
 
         private void Alinhamento(string tipo)
@@ -239,10 +254,13 @@ namespace EditorTexto
         {
             if (acao == "Desfazer")
             {
-                if(undoStack.Count > 0)
+                if (undoStack.Count > 0)
                 {
                     redoStack.Push(richTextBox1.Text);
+                    richTextBox1.TextChanged -= RichTextBox1_TextChanged;
                     richTextBox1.Text = undoStack.Pop();
+                    previousText = richTextBox1.Text;
+                    richTextBox1.TextChanged += RichTextBox1_TextChanged;
                 }
             }
             else if (acao == "Refazer")
@@ -250,7 +268,10 @@ namespace EditorTexto
                 if (redoStack.Count > 0)
                 {
                     undoStack.Push(richTextBox1.Text);
+                    richTextBox1.TextChanged -= RichTextBox1_TextChanged;
                     richTextBox1.Text = redoStack.Pop();
+                    previousText = richTextBox1.Text;
+                    richTextBox1.TextChanged += RichTextBox1_TextChanged;
                 }
             }
         }

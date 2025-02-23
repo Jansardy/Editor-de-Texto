@@ -72,13 +72,13 @@
             btnDesfazer = new ToolStripButton();
             btnRefazer = new ToolStripButton();
             toolSeparator5 = new ToolStripSeparator();
+            lblBuscar = new ToolStripLabel();
             TxtBox_Buscador = new ToolStripTextBox();
             fontDialog1 = new FontDialog();
             openFileDialog1 = new OpenFileDialog();
             saveFileDialog1 = new SaveFileDialog();
             printDialog1 = new PrintDialog();
             printDocument1 = new System.Drawing.Printing.PrintDocument();
-            lblBuscar = new ToolStripLabel();
             menuStrip1.SuspendLayout();
             BarFerramentas.SuspendLayout();
             SuspendLayout();
@@ -412,6 +412,7 @@
             btnDesfazer.Name = "btnDesfazer";
             btnDesfazer.Size = new Size(23, 22);
             btnDesfazer.Text = "Desfazer";
+            btnDesfazer.Click += Desfazer_Click;
             // 
             // btnRefazer
             // 
@@ -421,11 +422,18 @@
             btnRefazer.Name = "btnRefazer";
             btnRefazer.Size = new Size(23, 22);
             btnRefazer.Text = "Refazer";
+            btnRefazer.Click += Refazer_Click;
             // 
             // toolSeparator5
             // 
             toolSeparator5.Name = "toolSeparator5";
             toolSeparator5.Size = new Size(6, 25);
+            // 
+            // lblBuscar
+            // 
+            lblBuscar.Name = "lblBuscar";
+            lblBuscar.Size = new Size(45, 22);
+            lblBuscar.Text = "Buscar:";
             // 
             // TxtBox_Buscador
             // 
@@ -450,12 +458,6 @@
             // printDocument1
             // 
             printDocument1.PrintPage += printDocument1_PrintPage;
-            // 
-            // lblBuscar
-            // 
-            lblBuscar.Name = "lblBuscar";
-            lblBuscar.Size = new Size(45, 22);
-            lblBuscar.Text = "Buscar:";
             // 
             // FrmMain
             // 
