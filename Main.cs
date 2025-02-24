@@ -1,3 +1,4 @@
+using EditorTexto.Properties;
 using System.Text;
 
 namespace EditorTexto
@@ -8,6 +9,7 @@ namespace EditorTexto
         private string previousText = "";
         Stack<string> undoStack = new Stack<string>();
         Stack<string> redoStack = new Stack<string>();
+        
 
         public FrmMain()
         {
@@ -108,6 +110,7 @@ namespace EditorTexto
 
         #region Metodos|Funções
 
+        #region Texto Alterado
         private void RichTextBox1_TextChanged(object sender, EventArgs e)
         {
             if (richTextBox1.Text != previousText)
@@ -117,7 +120,9 @@ namespace EditorTexto
                 redoStack.Clear();
             }
         }
+        #endregion
 
+        #region Salvar pasta
         private void Salvar()
         {
             try
@@ -145,7 +150,9 @@ namespace EditorTexto
                 MessageBox.Show("Erro na gravação: " + ex.Message, "Erro ao Gravar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        #endregion
 
+        #region Abrir pasta
         private void Abrir()
         {
 
@@ -176,10 +183,10 @@ namespace EditorTexto
                     MessageBox.Show("Erro de leitura: " + ex.Message, "Erro ao ler", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
-
         }
+        #endregion
 
+        #region Alinhamento
         private void Alinhamento(string tipo)
         {
             switch (tipo)
@@ -197,7 +204,9 @@ namespace EditorTexto
                     break;
             }
         }
+        #endregion
 
+        #region Alterar Estilo Fonte
         private void ToggleFontStyle(FontStyle estilo)
         {
             if (richTextBox1.SelectionFont != null)
@@ -206,7 +215,9 @@ namespace EditorTexto
                 richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont, novoEstilo);
             }
         }
+        #endregion
 
+        #region Imprimir o Printpage
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             float linhasPagina = 0;
@@ -249,7 +260,9 @@ namespace EditorTexto
 
             pincel.Dispose();
         }
+        #endregion
 
+        #region Desfazer e Refazer
         private void Desfazer_Refazer(string acao)
         {
             if (acao == "Desfazer")
@@ -275,6 +288,7 @@ namespace EditorTexto
                 }
             }
         }
+        #endregion
 
         #endregion
 

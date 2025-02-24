@@ -173,6 +173,26 @@ namespace EditorTexto.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap modo_claro {
+            get {
+                object obj = ResourceManager.GetObject("modo-claro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap modo_escuro {
+            get {
+                object obj = ResourceManager.GetObject("modo-escuro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Negrito {
             get {
                 object obj = ResourceManager.GetObject("Negrito", resourceCulture);
