@@ -51,6 +51,7 @@
             centralizadoToolStripMenuItem = new ToolStripMenuItem();
             esquerdaToolStripMenuItem = new ToolStripMenuItem();
             direitaToolStripMenuItem = new ToolStripMenuItem();
+            ExibirToolStripMenuItem = new ToolStripMenuItem();
             BarFerramentas = new ToolStrip();
             btnNovo = new ToolStripButton();
             btnAbrir = new ToolStripButton();
@@ -95,7 +96,7 @@
             // menuStrip1
             // 
             menuStrip1.BackColor = SystemColors.ButtonFace;
-            menuStrip1.Items.AddRange(new ToolStripItem[] { arquivoToolStripMenuItem, editarToolStripMenuItem, formatarToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { arquivoToolStripMenuItem, editarToolStripMenuItem, formatarToolStripMenuItem, ExibirToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(697, 24);
@@ -241,6 +242,12 @@
             direitaToolStripMenuItem.Size = new Size(130, 22);
             direitaToolStripMenuItem.Text = "Direita";
             direitaToolStripMenuItem.Click += Direita_Click;
+            // 
+            // ExibirToolStripMenuItem
+            // 
+            ExibirToolStripMenuItem.Name = "ExibirToolStripMenuItem";
+            ExibirToolStripMenuItem.Size = new Size(48, 20);
+            ExibirToolStripMenuItem.Text = "Exibir";
             // 
             // BarFerramentas
             // 
@@ -467,6 +474,7 @@
             Controls.Add(BarFerramentas);
             Controls.Add(richTextBox1);
             Controls.Add(menuStrip1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Name = "FrmMain";
             StartPosition = FormStartPosition.CenterScreen;
@@ -531,5 +539,6 @@
         private ToolStripSeparator toolSeparator5;
         private ToolStripTextBox TxtBox_Buscador;
         private ToolStripLabel lblBuscar;
+        private ToolStripMenuItem ExibirToolStripMenuItem;
     }
 }
