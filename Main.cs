@@ -14,6 +14,8 @@ namespace EditorTexto
         public FrmMain()
         {
             InitializeComponent();
+            this.KeyPreview = true;
+            this.KeyDown += new KeyEventHandler(FrmMain_KeyDown);
             richTextBox1.TextChanged += RichTextBox1_TextChanged;
         }
 
@@ -157,7 +159,7 @@ namespace EditorTexto
         {
 
             this.openFileDialog1.Title = "Abrir Arquivo";
-            openFileDialog1.InitialDirectory = @"C:\Users\jansen\Documentos";
+            openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             openFileDialog1.Filter = "Text Files (*.txt)|*.txt|Rich Text Files (*.rtf)|*.rtf|All Files (*.*)|*.*";
 
             DialogResult dr = this.openFileDialog1.ShowDialog();
@@ -244,7 +246,9 @@ namespace EditorTexto
             while (count < linhasPagina && linha != null)
             {
                 PosY = MargemTop + (count * fonte.GetHeight(e.Graphics));
-                e.Graphics.DrawString(linha, fonte, pincel, MargemEsquerda, PosY, new StringFormat());
+                e.Graphics.DrawString(linha, fonte, pincel
+                    , new RectangleF(MargemEsquerda, PosY, e.MarginBounds.Width, fonte.Height)
+                    , new StringFormat(StringFormatFlags.LineLimit));
                 count += 1;
                 linha = leitura.ReadLine();
             }
@@ -289,6 +293,18 @@ namespace EditorTexto
             }
         }
         #endregion
+
+        private void FrmMain_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.N) Novo_Click(sender, e);
+            if (e.Control && e.KeyCode == Keys.O) Abrir_Click(sender, e);
+            if (e.Control && e.KeyCode == Keys.S) Salvar_Click(sender, e);
+            if (e.Control && e.KeyCode == Keys.Z) Desfazer_Click(sender, e);
+            if (e.Control && e.KeyCode == Keys.Y) Refazer_Click(sender, e);
+            if (e.Control && e.KeyCode == Keys.B) Negrito_Click(sender, e);
+            if (e.Control && e.KeyCode == Keys.I) Italico_Click(sender, e);
+            if (e.Control && e.KeyCode == Keys.U) Sublinhado_Click(sender, e);
+        }
 
         #endregion
 
